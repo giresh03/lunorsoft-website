@@ -1079,14 +1079,40 @@ section.portfolio {
   border-top: 1px dashed rgba(255, 255, 255, 0.2);
   cursor: pointer;
   transition: all 0.3s ease;
+  position: relative;
+  padding: 2rem 0;
 }
 
 .showcases .showcase:hover {
-  background: rgba(255, 255, 255, 0.02);
+  background: rgba(255, 255, 255, 0.05);
+  transform: translateX(10px);
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+.showcases .showcase::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 4px;
+  background: linear-gradient(180deg, transparent, #ffffff, transparent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.showcases .showcase:hover::before {
+  opacity: 1;
 }
 
 .showcase-title {
   position: relative;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.showcase-title:hover {
+  color: #ffffff;
 }
 
 .showcase-title::after {
@@ -1094,13 +1120,94 @@ section.portfolio {
   font-size: 1.5rem;
   margin-left: 1rem;
   opacity: 0.5;
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, opacity 0.3s ease;
   display: inline-block;
 }
 
 .showcase-item.active .showcase-title::after {
   transform: rotate(180deg);
   opacity: 1;
+}
+
+/* Visit Website Button */
+.showcase-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 1rem 0;
+}
+
+.btn-visit-website {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 1rem 2rem;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 2.5rem;
+  color: #ffffff;
+  font-family: "heading", sans-serif;
+  font-size: 1.4rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.btn-visit-website::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.1));
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.btn-visit-website:hover::before {
+  opacity: 1;
+}
+
+.btn-visit-website span {
+  position: relative;
+  z-index: 1;
+}
+
+.btn-visit-website svg {
+  position: relative;
+  z-index: 1;
+  transition: transform 0.4s ease;
+  flex-shrink: 0;
+}
+
+.btn-visit-website:hover {
+  transform: translateY(-2px);
+  border-color: rgba(255, 255, 255, 0.4);
+  box-shadow: 0 8px 25px rgba(255, 255, 255, 0.15);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.08));
+}
+
+.btn-visit-website:hover svg {
+  transform: translate(3px, -3px);
+}
+
+.btn-visit-website:active {
+  transform: translateY(0);
+}
+
+/* Showcase Image Hover Effect */
+.showcases .showcase img {
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  border-radius: 0.8rem;
+  overflow: hidden;
+}
+
+.showcases .showcase:hover img {
+  transform: scale(1.1) rotate(-2deg);
+  box-shadow: 0 10px 30px rgba(255, 255, 255, 0.1);
 }
 
 .project-expandable-content {
@@ -1151,9 +1258,6 @@ section.portfolio {
   opacity: 1;
 }
 
-.showcases .showcase:hover img {
-  transform: rotate(-5deg) scale(1.5);
-}
 
 marquee {
   background: #0a0a0a;
@@ -1390,6 +1494,31 @@ footer small {
     height: 20rem;
     object-fit: contain;
     margin-block: 2rem;
+  }
+  .showcase-actions {
+    justify-content: center;
+    margin-top: 1rem;
+    padding: 0;
+  }
+  .btn-visit-website {
+    font-size: 1.2rem;
+    padding: 0.8rem 1.5rem;
+    width: 100%;
+    justify-content: center;
+  }
+  .showcases .showcase {
+    padding: 1.5rem 0;
+  }
+  .showcases .showcase:hover {
+    transform: translateX(0);
+  }
+  .showcases .showcase .row {
+    flex-direction: column;
+  }
+  .showcase-actions {
+    order: 3;
+    width: 100%;
+    margin-top: 1.5rem;
   }
 }
 
